@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  nginxrtmp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: nginxrtmp
+    ports:
+      - "1935:1935"
+      - "80:80"

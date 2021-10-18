@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div class="container">
+
+    <section class="starter-template">
+        <h1>VideoJS MPEG-DASH/HLS</h1>
+
+        <video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls>
+        </video>
+
+        <label> DASH URL: <input id=url1 type=url style="width: 400px" value="http://192.168.1.82/dash/test/index.mpd">
+        </label>
+        <button onclick="play(1)">Load</button>
+        <br>
+        <label> HLS URL: <input id=url2 type=url style="width: 400px" value="http://192.168.1.82/hls/test/index.m3u8">
+        </label>
+        <button onclick="play(2)">Load</button>
+        <br>
+    </section>
+
+</div>
+
+<link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+<script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/videojs-contrib-dash/dist/videojs-dash.js"></script>
+<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+
+<script>
+    const player = window.player = window.videojs('example-video');
+
+    function play(type) {
+        let url = document.getElementById('url' + type);
+        player.src({src: url.value});
+        player.play()
+    }
+</script>
+</body>
+
+</html>
